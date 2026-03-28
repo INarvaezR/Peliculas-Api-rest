@@ -3,9 +3,16 @@ const Media = require("../models/media");
 /* Obtener todas las medias */
 const getMedias = async (req, res) => {
     try {
-        const medias = await Media.find();
+        const medias = await Media.find()
+            .populate("genero")
+            .populate("director")
+            .populate("productora")
+            .populate("tipo");
+        
+    
         res.json(medias);
     } catch (error) {
+        console.log(error);
         res.status(500).json({ msg: "Error al obtener medias" });
     }
 };
@@ -13,7 +20,11 @@ const getMedias = async (req, res) => {
 /* Obtener media por ID */
 const getMediaById = async (req, res) => {
     try {
-        const media = await Media.findById(req.params.id);
+        const media = await Media.findById(req.params.id)
+            .populate("genero")
+            .populate("director")
+            .populate("productora")
+            .populate("tipo");
         res.json(media);
     } catch (error) {
         res.status(500).json({ msg: "Error al buscar la media" });

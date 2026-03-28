@@ -1,4 +1,4 @@
-const Director = require("../models/Director");
+const Director = require("../models/director");
 
 /* Obtener todos los directores */
 const getDirectores = async (req, res) => {
