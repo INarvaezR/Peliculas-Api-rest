@@ -17,6 +17,11 @@ app.use("/api/director", require("./routes/director"));
 app.use("/api/productora", require("./routes/productora"));
 app.use("/api/tipo", require("./routes/tipo"));
 
+/*-----Ruta de prueba -----*/
+app.get("/test", (req, res) => {
+  res.send("FUNCIONA OK");
+});
+
 getConnection();
 
 app.listen(port, () => {
