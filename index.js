@@ -15,12 +15,12 @@ app.get("/", (req, res) => {
   res.send("API de películas funcionando 🚀");
 });
 
-/*----- Ruta de prueba -----*/
+/* Ruta de prueba */
 app.get("/test", (req, res) => {
   res.send("FUNCIONA BACKEND");
 });
 
-/*----- Routes -----*/
+/* Rutas API */
 app.use("/api/genero", require("./routes/genero"));
 app.use("/api/media", require("./routes/media"));
 app.use("/api/director", require("./routes/director"));
