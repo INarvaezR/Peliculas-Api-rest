@@ -10,6 +10,11 @@ const port = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
+/* Ruta raíz */
+app.get("/", (req, res) => {
+  res.send("API de películas funcionando 🚀");
+});
+
 /*----- Ruta de prueba -----*/
 app.get("/test", (req, res) => {
   res.send("FUNCIONA BACKEND");
