@@ -5,7 +5,7 @@ const cors = require("cors");
 const {getConnection} = require("./db/db-connection-mongo");
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
@@ -20,7 +20,7 @@ app.use("/api/tipo", require("./routes/tipo"));
 getConnection();
 
 app.listen(port, () => {
-    console.log(`🟢 Servidor corriendo en el puerto ${port}`);
+  console.log("PUERTO USADO:", port);
 });
 
 /*-----Ruta de prueba -----*/
