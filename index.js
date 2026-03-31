@@ -20,13 +20,6 @@ app.get("/test", (req, res) => {
   res.send("FUNCIONA BACKEND");
 });
 
-app.get("/health", (req, res) => {
-  res.json({
-    status: "ok",
-    uptime: process.uptime()
-  });
-});
-
 /* Rutas API */
 app.use("/api/genero", require("./routes/genero"));
 app.use("/api/media", require("./routes/media"));
