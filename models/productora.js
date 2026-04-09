@@ -19,13 +19,8 @@ const ProductoraSchema = Schema({
     type: String,
     enum: ['Activo','Inactivo'],
     default: 'Activo'
-  },
-
-  fechaCreacion: {
-    type: Date,
-    default: Date.now
   }
 
-});
+}, { timestamps: true });
 
 module.exports = model('Productora', ProductoraSchema);

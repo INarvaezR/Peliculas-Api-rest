@@ -53,13 +53,8 @@ const MediaSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: "Tipo",
     required: true
-  },
-
-  fechaCreacion: {
-    type: Date,
-    default: Date.now
   }
 
-});
+}, { timestamps: true });
 
 module.exports = model("Media", MediaSchema);

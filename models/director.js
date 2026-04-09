@@ -12,18 +12,8 @@ const DirectorSchema = Schema({
     type: String,
     enum: ['Activo', 'Inactivo'],
     default: 'Activo'
-  },
-
-  fechaCreacion: {
-    type: Date,
-    default: Date.now
-  },
-
-  fechaActualizacion: {
-    type: Date,
-    default: Date.now
   }
 
-});
+}, { timestamps: true });
 
 module.exports = model('Director', DirectorSchema);

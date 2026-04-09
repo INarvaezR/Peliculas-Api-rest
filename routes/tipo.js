@@ -1,4 +1,6 @@
 const { Router } = require('express');
+const { check } = require('express-validator');
+const { validarCampos } = require('../middlewares/validar-campos');
 
 const {
   getTipos,
@@ -12,12 +14,25 @@ const router = Router();
 
 router.get('/', getTipos);
 
-router.get('/:id', getTipoById);
+router.get('/:id', [
+  check('id', 'El ID no es válido').isMongoId(),
+  validarCampos
+], getTipoById);
 
-router.post('/', createTipo);
+router.post('/', [
+  check('nombre', 'El nombre es obligatorio').not().isEmpty(),
+  validarCampos
+], createTipo);
 
-router.put('/:id', updateTipo);
+router.put('/:id', [
+  check('id', 'El ID no es válido').isMongoId(),
+  check('nombre', 'El nombre es obligatorio').not().isEmpty(),
+  validarCampos
+], updateTipo);
 
-router.delete('/:id', deleteTipo);
+router.delete('/:id', [
+  check('id', 'El ID no es válido').isMongoId(),
+  validarCampos
+], deleteTipo);
 
 module.exports = router;

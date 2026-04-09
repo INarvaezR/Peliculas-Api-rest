@@ -9,13 +9,8 @@ const TipoSchema = Schema({
 
   descripcion: {
     type: String
-  },
-
-  fechaCreacion: {
-    type: Date,
-    default: Date.now
   }
 
-});
+}, { timestamps: true });
 
 module.exports = model('Tipo', TipoSchema);

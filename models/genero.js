@@ -16,17 +16,7 @@ const GeneroSchema = Schema({
   descripcion: {
     type: String,
     trim: true
-  },
-  fechaCreacion: {
-    type: Date,
-    required: true,
-    default: Date.now
-  },
-  fechaActualizacion: {
-    type: Date,
-    required: true,
-    default: Date.now
   }
-});
+}, { timestamps: true });
 
 module.exports = model('Genero', GeneroSchema);

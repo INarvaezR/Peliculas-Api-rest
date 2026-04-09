@@ -3,14 +3,23 @@ const Media = require("../models/media");
 /* Obtener todas las medias */
 const getMedias = async (req, res) => {
     try {
-        const medias = await Media.find()
-            .populate("genero")
-            .populate("director")
-            .populate("productora")
-            .populate("tipo");
+        const { limite = 10, desde = 0 } = req.query;
+
+        const [total, medias] = await Promise.all([
+            Media.countDocuments(),
+            Media.find()
+                .skip(Number(desde))
+                .limit(Number(limite))
+                .populate("genero")
+                .populate("director")
+                .populate("productora")
+                .populate("tipo")
+        ]);
         
-    
-        res.json(medias);
+        res.json({
+            total,
+            medias
+        });
     } catch (error) {
         console.log(error);
         res.status(500).json({ msg: "Error al obtener medias" });
